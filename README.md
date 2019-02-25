@@ -1,16 +1,22 @@
-### WebdriverIO-v5 with Jasmine BDD
+### WebdriverIO-v5 with Jasmine test framework
 
-This repository contains an implementation of new webdriverIO (v5x) and libraries that develop automation script using the Jasmine test framework. It support ES6, ES8 (via babel-register) and uses Grunt to manage tasks, provides utilities to read data from MS-Excel, executes SQL statements to any database(RDBMS such as Oracle, TeraData, MySQL, Vertica) for end to end testing. It generate Spec, JUNIT, Allure reporters as well.
+This repository contains an implementation of webdriverIO (v5x) and libraries that develop automation script using the Jasmine test framework. 
+
+It supports:
+- ES6, ES8 (via babel-register) 
+- Utilities to read data from MS-Excel, executes SQL statements to any database(RDBMS such as Oracle, TeraData, MySQL, Vertica) for end to end testing.
 
 
-### Installation
+### Required software
 
-`NodeJS:` v8 and above.
+`[NodeJS:](https://nodejs.org/en/download/)` v8 and above.
+
 `JDK 1.8:` JDK 1.8+ and make sure class path is set properly. JAVA is require to start `Selenium Server` on your local environment nothing else.
 
 
+  
+### Setup
 
-Now navigate to the framework's package.json folder and run `npm install` to grab all dependencies.
 
 
 

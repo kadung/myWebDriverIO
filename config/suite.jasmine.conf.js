@@ -160,7 +160,7 @@ exports.config = {
     reporters: [
         'spec',
         ['junit', {
-            outputDir: './test/reports/junit-results/',
+            outputDir: './reports/junit-results/',
             outputFileFormat: function(opts) { // optional
                 return `results-${opts.cid}.${opts.capabilities}.xml`
             }
@@ -168,7 +168,7 @@ exports.config = {
         ],
 
         ['allure', {
-            outputDir: './test/reports/allure-results/',
+            outputDir: './reports/allure-results/',
             disableWebdriverStepsReporting: true,
             disableWebdriverScreenshotsReporting: false,
           }

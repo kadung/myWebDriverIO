@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "node-inspector": "node-inspector --debug-port 5859 --no-preload",
-    "test": "node node_modules/.bin/wdio ./test/config/suite.jasmine.conf.js",
+    "test": "node_modules/.bin/wdio ./config/suite.jasmine.conf.js",
     "allure-report": "node_modules/.bin/allure generate ./reports/allure-results && allure report",
-    "junit-report": "node_modules/.bin/junit-viewer --results=./reports/junit-results --save=junit-results.html && open junit-results.html"
+    "junit-report": "node_modules/.bin/junit-viewer --results=./reports/junit-results --save=junit-results.html && open junit-results.html",
+    "suite": "node_modules/.bin/wdio "
   },
   "repository": {
     "type": "git",

@@ -1,5 +1,5 @@
 
-import contactUs from '../pageobjects/ta-contactus.page';
+import contactUs from '../pages/ta-contactus.page';
 
 /*
 	This is a BDD test using Jasmine JavaScript framework
