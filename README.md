@@ -1,11 +1,11 @@
-### WebdriverIO-v5 with Jasmine test framework
+### Overview
 
-This repository contains an implementation of webdriverIO (v5x) and libraries that develop automation script using the Jasmine test framework. 
+This repository contains an implementation of webdriverIO (v5x) and libraries that develop automation script with the Jasmine test framework. 
 
 It supports:
-- ES6, ES8 (via babel-register) 
-- Utilities to read data from MS-Excel, executes SQL statements to any database(RDBMS such as Oracle, TeraData, MySQL, Vertica) for end to end testing.
-
+- Fully intergrated with webdriverIO.
+- ES6, ES8 (via babel-register) .
+- Utilities to read data from MS-Excel, executes SQL statements to any database(RDBMS such as Oracle, TeraData, MySQL, Vertica) and execute query to MongoDB.
 
 ### Required software
 
@@ -13,40 +13,17 @@ It supports:
 
 `JDK 1.8:` JDK 1.8+ and make sure class path is set properly. JAVA is require to start `Selenium Server` on your local environment nothing else.
 
-
-  
-### Setup
-
-
-
-
-### Selenium Tests / Appium Tests
-
-  To run your test you must have selenium / Appium server up and running to execute any webdriverIO tests, or it will fail fast with an error. To start selenium automatically it has been added as part of `services: ['selenium-standalone']` in the .conf.js.  That's all there is to it.!.
-
-### Run Some Sample Tests
-
-To execute the entire test suite in local development, you can use any one of the options mentioned below:
-
-	`npm run test`
+To run your test you must have selenium / Appium server up and running to execute any webdriverIO tests, or it will fail fast with an error. To start selenium automatically it has been added as part of `services: ['selenium-standalone']` in the .conf.js.  That's all there is to it !.
 
 💡 Before running mobile tests, perform the requisite Appium setup. For hassle free `one click Appium setup on OSX` refer [appium-setup-made-easy-OSX](https://github.com/amiya-pattnaik/appium-setup-made-easy-OSX) or refer [Appium Docs](http://appium.io/getting-started.html?lang=en)
 
 ### Config Files
 
-WebdriverIO uses configuration files to setup and execute tests in specific ways.  The configuration is fully customizable, and different functions can be invoked before, during and after each test or test suite.  Config files are found in the `/test/config/` directory and all end with `*.conf.js`.  These can be called via the the cli
+WebdriverIO uses configuration files to setup and execute tests in specific ways.  The configuration is fully customizable, and different functions can be invoked before, during and after each test or test suite.  Config files are found in the `/config/` directory and all end with `*.conf.js`.
 
 ### Reporters
 
 WebdriverIO uses several different types of test reporters to communicate pass/failure.  
-
-##### Dot
-
-To use the dot reporter just add 'dot' to the reporters array in the config file. The dot reporter prints for each test spec a dot. If colors are enabled on your machine you will see three different colors for dots. Yellow dots mean that at least one browser has executed that spec. A green dot means all browser passed that spec and a red to means that at least one browser failed that spec. All config files have this turned on by default.
-
-##### Spec
-
-Test reporter, that prints detailed results to console.
 
 ##### Allure
 
@@ -103,9 +80,7 @@ An object called `Page` will be created with the prototype model or by ES6 class
 
 It is preferable to separate page objects into individual files that end with `.page.js`.  These will require the basic `page.js` prototype construct / abstract class and create new objects for each individual page.
 
-For more information on the implementation of `Page Object Design Pattern`, refer to the `/test/pageobjects` directory. A typical page class using ES6 syntax will look similar to this:
-
-💡 If you want to use ES5 syntax, refer to the sample.page.js under util-examples.
+For more information on the implementation of `Page Object Design Pattern`, refer to the `/test/pages` directory. A typical page class using ES6 syntax will look similar to this:
 
 ```
 import Page from './page';
@@ -144,6 +119,8 @@ export default new LoginPage()
 
 ### Working with DataBase
 
+##### Relational database
+
 A relational database is, simply, a database that stores related information across multiple tables and allows you to query information in more than one table at the same time. Your application under test displays data from these database. So when you are actually performing automation testing it is very likely that you need to verify the data between actual (which you got it from browser) Vs expected (which you will get it from the database by executing SQL statements on database). This can be done by below statements in your code.
 ```
 //example of connection to Oracle DataBase
@@ -172,9 +149,12 @@ Note: `node-any-jdbc` is NOT packaged under this project. If you need, you can i
 
 ```
 
+##### MongoDB
+
+
 ### Working with MS-Excel
 
-You can user MS-Excel and store your test data, expected data in an excel sheet. Tou can keeep any number of excel sheets you want and use below common methods to puull data from youe sheet to be use as part of testing.  Please note it only support .xlsx file format. For more information refer to the `common-utilities.js` and `util-examples`
+You can user MS-Excel and store your test data, expected data in an excel sheet. Tou can keeep any number of excel sheets you want and use below common methods to puull data from youe sheet to be use as part of testing.  Please note it only support .xlsx file format. For more information refer to the `common-utilities.js`.
 
 ```
 //example of pulling data from MS-Excel
@@ -201,11 +181,4 @@ utl.excel_getAllSheetData(__dirname+'/sample.xlsx', function(results){
 
 ### Common utilities
 
-Refer to the common Javascript functions that provides clean, performant methods for manipulating objects, collections, MS-Excel utilities, DataBase utilities etc. Few sample code can be found in ./util-examples/
-
 Use [lodash.js](https://lodash.com/) already bundled inside the framework which provides tons of helpers: map, filter, invoke — as well as more specialized goodies: function binding, javascript templating, creating quick indexes, deep equality testing, and so on.
-
-
-## Licensing
-
-MIT
