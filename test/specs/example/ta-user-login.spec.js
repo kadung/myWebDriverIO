@@ -1,7 +1,6 @@
 
-import LoginPage from '../pages/ta-login.page';
-import assert from 'assert';
-import utl from '../../utilities/common-utilities';
+import LoginPage from '../../pages/example/ta-login.page';
+//import assert from 'assert';
 //var utl = require('../../utilities/common-utilities');
 
 
