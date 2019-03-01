@@ -8,7 +8,7 @@
     "test": "node_modules/.bin/wdio ./config/suite.jasmine.conf.js",
     "allure-report": "node_modules/.bin/allure generate ./reports/allure-results && allure report",
     "junit-report": "node_modules/.bin/junit-viewer --results=./reports/junit-results --save=junit-results.html && open junit-results.html",
-    "suite": "node_modules/.bin/wdio "
+    "test:qa": "node_modules/.bin/wdio ./config/qa.optunli.conf.js"
   },
   "repository": {
     "type": "git",
