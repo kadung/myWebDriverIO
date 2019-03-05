@@ -1,0 +1,66 @@
+Ref:
+    - http://www.hacksparrow.com/node-js-exports-vs-module-exports.html
+
+======================================================================================
+    CommonJS
+======================================================================================
++ exports: is used when creating JavaScript modules to export functions, objects, or 
+primitive values from the module so they can be used by other programs.
+    exports.name = function() {
+        console.log('My name is Lemmy Kilmister');
+    };
+
++ require: a built-in function with a special purpose to load modules (each JS file in
+Node is treated as a separate module).
+    var rocker = require('./rocker.js');
+    rocker.name(); // 'My name is Lemmy Kilmister'
+
++ modudule.exports: is the object that's actually returned as the result of a require 
+call.
+    module.exports = function(name, age) {
+        this.name = name;
+        this.age = age;
+        this.about = function() {
+            console.log(this.name +' is '+ this.age +' years old');
+        };
+    };
+
+    var Rocker = require('./rocker.js');
+    var r = new Rocker('Ozzy', 62);
+    r.about(); // Ozzy is 62 years old
+
++ exports is just module.exports's little helper. All exports does is collect properties
+and attach them to module.exports
+    module.exports.age = 68;
+    exports.name = 'Lemmy Kilmister';
+    var rocker = require('./rocker.js');
+    console.log('%s is %s', rocker.name, rocker.age); // Lemmy Kilmister is 68
+
++ A file only has 1  modudule.exports, if module.exports is overwrite with anything 
+in the module, it will fail.
+    module.exports.age = 68;
+    exports.name = 'Lemmy Kilmister';
+    module.exports = 'WTF';
+
++ Note: just because module.exports.age and exports.name are exported, does not mean 
+you should use a combination of both. My recommendation is to stick to exports.*, and 
+be aware of module.exports.*.
+
+======================================================================================
+    ES6
+======================================================================================
+    CommonJS           |   ES6
+    --------------------------------------
+    require            |   import
+    modudule.exports   |   export
+
++ export: a file can have multiple exported name.
+    export const MyComponent = () => {}
+    export const MyComponent2 = () => {}
+    import { MyComponent2 as MyNewComponent } from "./MyComponent";
+
++ export default: a file can have only have one export name, other export is ignored.
+The name of import is completely independent in default export and we can use any name
+    const MyComponent = () => {}
+    export default MyComponent;
+    import MyDefaultComponent from "./MyDefaultExport";
