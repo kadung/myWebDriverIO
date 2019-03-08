@@ -137,9 +137,9 @@ A relational database is, simply, a database that stores related information acr
 
 MongoDB is a document database, it stores data in flexible, JSON-like documents, meaning fields can vary from document to document and data structure can be changed over time.
 
-`mongoose` library is used to connect and query data from mongodb. For trouble shooting and more information, please visit https://mongoosejs.com/docs/guide.html
+`mongoose` and `mongo native driver` library are used to connect and query data from mongodb. For trouble shooting and more information, please visit https://mongoosejs.com/docs/guide.html
 
-💡 You can get all the schemas and supports from your team if they also use same library 
+💡 If you use the same library with your development team then you can have all the support. 
 
 ### Working with MS-Excel
 
