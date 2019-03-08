@@ -1,11 +1,11 @@
 ### Overview
 
-This repository contains an implementation of webdriverIO (v5x) and libraries that develop automation script with the Jasmine test framework. 
+This repository contains an implementation of webdriverIO (v5.x) and libraries that develop automation script with the Jasmine test framework. 
 
 It supports:
 - Fully intergrated with webdriverIO.
 - ES6, ES8 (via babel-register) .
-- Utilities to read data from MS-Excel, executes SQL statements to any database(RDBMS such as Oracle, TeraData, MySQL, Vertica) and execute query to MongoDB.
+- Utilities to read data from MS-Excel, queries data from any SQL database or MongoDB.
 
 ### Required software
 
@@ -16,6 +16,12 @@ It supports:
 To run your test you must have selenium / Appium server up and running to execute any webdriverIO tests, or it will fail fast with an error. To start selenium automatically it has been added as part of `services: ['selenium-standalone']` in the .conf.js.  That's all there is to it !.
 
 💡 Before running mobile tests, perform the requisite Appium setup. For hassle free `one click Appium setup on OSX` refer [appium-setup-made-easy-OSX](https://github.com/amiya-pattnaik/appium-setup-made-easy-OSX) or refer [Appium Docs](http://appium.io/getting-started.html?lang=en)
+
+### Insatllation
+- Clone the repo
+- Install all required dependency: `npm install`
+- Install selenium-standalone: `./node_modules/.bin/selenium-standalone install`
+- Run your test: `npm run test:dev`
 
 ### Config Files
 
@@ -119,65 +125,26 @@ export default new LoginPage()
 
 ### Working with DataBase
 
+When you are actually performing automation testing it is very likely that you need to verify the data between actual (which you got it from browser) vs expected (which you will get it from the database). For more information refer to the example folder `./test/ultilities/example/`.
+
 ##### Relational database
 
-A relational database is, simply, a database that stores related information across multiple tables and allows you to query information in more than one table at the same time. Your application under test displays data from these database. So when you are actually performing automation testing it is very likely that you need to verify the data between actual (which you got it from browser) Vs expected (which you will get it from the database by executing SQL statements on database). This can be done by below statements in your code.
-```
-//example of connection to Oracle DataBase
+A relational database is, simply, a database that stores related information across multiple tables and allows you to query information in more than one table at the same time. 
 
-var  db   = require('node-any-jdbc');
-
-cogfig = {
-  libpath: './config/drivers/oracle/ojdbc7.jar',
-  drivername: 'oracle.jdbc.driver.OracleDriver',
-  url:  'jdbc:oracle:thin:QA/password123@//abc-test.corp.int:1527/stage1',
-  // uri: 'jdbc:oracle:thin://abc-test.corp.int:1527/stage1',
-  // user: 'QA',
-  // password: 'password123',
-};
-
-//example of sample select query to fetch the result set
-
-var sql = 'SELECT * FROM emp_info where emp_id = "1001"';
-db.execute(cogfig, sql, function(results){
-  console.log(results);
-});
-
-For trouble shooting and more information, please visit `node-any-jdbc` module which can be [found here](https://www.npmjs.com/package/node-any-jdbc)
-
-Note: `node-any-jdbc` is NOT packaged under this project. If you need, you can install it and start using it right away. You can also find sample examples under /util-examples/database-example.js
-
-```
+`node-any-jdbc` library is used to connect and query data from relational database. For trouble shooting and more information, please visit https://www.npmjs.com/package/node-any-jdbc
 
 ##### MongoDB
 
+MongoDB is a document database, it stores data in flexible, JSON-like documents, meaning fields can vary from document to document and data structure can be changed over time.
+
+`mongoose` library is used to connect and query data from mongodb. For trouble shooting and more information, please visit https://mongoosejs.com/docs/guide.html
+
+💡 You can get all the schemas and supports from your team if they also use same library 
 
 ### Working with MS-Excel
 
-You can user MS-Excel and store your test data, expected data in an excel sheet. Tou can keeep any number of excel sheets you want and use below common methods to puull data from youe sheet to be use as part of testing.  Please note it only support .xlsx file format. For more information refer to the `common-utilities.js`.
+You can user MS-Excel and store your test data, expected data in an excel sheet. Tou can keeep any number of excel sheets you want and use below common methods to puull data from youe sheet to be use as part of testing.  Please note it only support .xlsx file format. For more information refer to the example folder `./test/ultilities/example/`.
 
-```
-//example of pulling data from MS-Excel
-
-var  utl  = require('../utilities/common-utilities.js');
-utl.excel_getTableRow(__dirname+'/sample.xlsx', 'info', 'emp_id', '101', function(results){
-  // returns only one row based on the condition
-  //console.log(results);
-  //console.log(results.emp_id);
-});
-
-utl.excel_getTableRows(__dirname+'/sample.xlsx', 'address', function(results){
-  // returns all rows of the specified sheet
-  //console.log(results[1]);
-  //then do what ever validation you to do withe results
-});
-
-utl.excel_getAllSheetData(__dirname+'/sample.xlsx', function(results){
-  // returns all sheets data of a excel file
-  //console.log(results);
-  //then do what ever validation you to do withe results
-});
-```
 
 ### Common utilities
 

@@ -1,14 +1,13 @@
 {
   "name": "webdriveriov5",
   "version": "1.0.0",
-  "description": "Automation Implementation",
+  "description": "WebdriverIO Implementation",
   "main": "index.js",
   "scripts": {
-    "node-inspector": "node-inspector --debug-port 5859 --no-preload",
-    "test": "node_modules/.bin/wdio ./config/suite.jasmine.conf.js",
     "allure-report": "node_modules/.bin/allure generate ./reports/allure-results && allure report",
     "junit-report": "node_modules/.bin/junit-viewer --results=./reports/junit-results --save=junit-results.html && open junit-results.html",
-    "test:qa": "node_modules/.bin/wdio ./config/qa.optunli.conf.js"
+    "test:dev": "node_modules/.bin/wdio ./config/local.dev.conf.js",
+    "test:qa": "node_modules/.bin/wdio ./config/local.qa.conf.js"
   },
   "repository": {
     "type": "git",
@@ -40,6 +39,8 @@
     "assert": "^1.4.1",
     "junit-viewer": "^4.11.1",
     "lodash": "^4.17.4",
+    "mongodb": "^3.1.13",
+    "mongoose": "^5.4.17",
     "node-excel-to-json": "0.0.3",
     "underscore": "^1.8.3",
     "webdriverio": "^5.5.0"

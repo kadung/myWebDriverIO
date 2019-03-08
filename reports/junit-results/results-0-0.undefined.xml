@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="Login_function" timestamp="2019-03-05T17:52:41" time="5.826" tests="1" failures="0" errors="0" skipped="0">
+  <testsuite name="Login_function" timestamp="2019-03-06T13:30:52" time="8.361" tests="1" failures="0" errors="0" skipped="0">
     <properties>
       <property name="specId" value="0"/>
       <property name="suiteName" value="Login function"/>
       <property name="capabilities" value="chrome"/>
-      <property name="file" value=".\test\specs\optunli\login.spec.js"/>
+      <property name="file" value=".\test\specs\login.spec.js"/>
     </properties>
-    <testcase classname="chrome.Login_function" name="Email_with_one_account_logs_in_successfully" time="5.8"/>
+    <testcase classname="chrome.Login_function" name="Email_with_one_account_logs_in_successfully" time="8.334"/>
   </testsuite>
 </testsuites>

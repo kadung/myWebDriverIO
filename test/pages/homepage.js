@@ -1,3 +1,5 @@
+import {isElementExisted} from '../../utilities/common-actions'
+
 class HomePage {
     // Element
     get logo()                  { return $('//img[@src="/assets/images/optunli.png"]') }
@@ -13,6 +15,7 @@ class HomePage {
     open() {        
         browser.url('/');
         browser.maximizeWindow();
+        waitForHomePage();
     }
 
     waitForHomePage() {
@@ -22,8 +25,6 @@ class HomePage {
     }
 
     login(userName, password) {
-        this.open();
-        this.waitForHomePage();
         this.usernameInput.setValue(userName);
         this.passwordInput.setValue(password);
         this.signInButton.click();
@@ -31,11 +32,7 @@ class HomePage {
 
     // Assertion
     checkLoginSuccess(){
-        try {
-            this.verifyLoginText.waitForDisplayed(5000);
-            return true;
-        }
-        catch (err) { return false; }
+        return isElementExisted(this.verifyLoginText, 5000);
     }
 }
 

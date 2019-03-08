@@ -1,10 +1,11 @@
-import HomePage from '../../pages/optunli/HomePage';
-import TestData from '../../test-data/test-data';
+import { HomePage } from '../pages/homepage';
+import { EnvData } from '../test-data/env-data';
 
 
 describe('Login function', function() {
     it('Email with one account logs in successfully', function() {
-        HomePage.login(TestData.email, TestData.password);
+        HomePage.open();
+        HomePage.login(EnvData.email, EnvData.password);
         expect(HomePage.checkLoginSuccess()).toBe(true);
     });
 
