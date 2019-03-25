@@ -1,6 +1,7 @@
 const db = require('./connection')
 const User = require('./models/User');
 
+// Insert document
 var dave = new User({
     name: 'T123',
     username: 'alex@',
@@ -10,4 +11,11 @@ var dave = new User({
 dave.save().then(function(dave){
     db.close()
 });
+
+// Query document
+
+
+// Delete document
+
+
 
