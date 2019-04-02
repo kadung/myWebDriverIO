@@ -1,8 +1,7 @@
 //************************************************************************************
-//   Common and reusable actions
+//   Common and reusable actions 
 //************************************************************************************
 module.exports = {
-
 
     getUrlAndTitle: function (customVar) {
         return {

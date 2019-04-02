@@ -29,7 +29,6 @@ let UserSchema = new Schema({
     
     next();
     });
-
     
 // Create mogoose model
 const User = db.model('User', UserSchema);

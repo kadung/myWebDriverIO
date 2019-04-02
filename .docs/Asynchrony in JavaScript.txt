@@ -1,0 +1,104 @@
+Ref:
+    1. https://medium.com/codebuddies/getting-to-know-asynchronous-javascript-callbacks-promises-and-async-await-17e0673281ee
+
+--------------------------------------------------------------------------------------
+    Asynchrony in JavaScript
+--------------------------------------------------------------------------------------
+- Asynchrony in computer programming refers to the occurrence of events independently 
+of the main program flow and ways to deal with such events.
+
+- In programming languages like e.g Java or C# the “main program flow” happens on the 
+main thread and “the occurrence of events independently of the main program flow” is 
+the spawning of new threads that runs code in parallel to the “main program flow”.
+
+- This is not the case with JavaScript since a JavaScript program is single threaded.
+In JavaScript, asynchrony is handled with "non-blocking I/O model” which means is that
+while the execution of JavaScript is blocking, I/O operations are not. I/O operations 
+can be fetching data over internet with Ajax or over WebSocket connections, querying
+data from a database such as MongoDB or accessing the filesystem with the NodeJs “fs” 
+module. All these kind of operations are done in parallel to the execution of your code
+and it is not JavaScript that does these operations, but the underlying engine does it.
+
+--------------------------------------------------------------------------------------
+    Callbacks
+--------------------------------------------------------------------------------------
+- For JavaScript to know when an asynchronous operation has a result (a result being 
+either returned data or an error that occurred during the operation), it points to a 
+function that will be executed once that result is ready. This function is what we call
+a “callback function”. Meanwhile, JavaScript continues its normal execution of code. 
+This is why frameworks that does external calls of different kinds have APIs where you 
+provide callback functions to be executed later on.
+
+- Example:
+    const request = require(‘request’);
+    request('https://www.somepage.com', function (error, response, body) {
+        if(error){
+        // Handle error.
+        }
+        else {
+            // Successful, do something with the result.
+        }
+    });
+
+- One thing to note here is the first argument in every callback function will contain 
+an error if something went wrong, or will be empty if all went well. This pattern is 
+called “error first callbacks” and is very common. It is the standard pattern for 
+callback-based APIs in NodeJs. This means that for every callback declared we need to 
+check if there is an error and that just adds to the mess when dealing with nested 
+callbacks.
+
+- Callbacks are a good way to declare what will happen once an I/O operation has a 
+result, but what if you want to use that data in order to make another request? You 
+can only handle the result of the request within the callback function provided. When
+you have a callback in a callback, the code tends to be a bit less readable. In some 
+cases you may have a callback in a callback in a callback or even a callback in a 
+callback ... in a callback. This is the anti-pattern that has been named “callback 
+hell”.
+
+--------------------------------------------------------------------------------------
+    Promises
+--------------------------------------------------------------------------------------
+- A promise is an object that wraps an asynchronous operation and notifies when it’s 
+done. This sounds exactly like callbacks, but the important differences are in the 
+usage of Promises. Instead of providing a callback as a argument, a promise has its 
+own methods which you call to tell the promise what will happen when it is successful 
+or when it fails.
+
+- The methods a promise provides are:
+    + “then(…)” for when a successful result is available 
+    + “catch(…)” for when something went wrong
+
+- Example:
+    someAsyncOperation(someParams)
+    .then(function(result){
+        // Do something with the result
+        return someAsyncOperation(someParams);
+    })
+    .then(function(result){
+        // Do something with the result from second someAsyncOperation
+    })
+    .catch(function(error){
+        // Handle error
+    });
+
+- Some important things to notice: 
+    + “someAsyncOperation(someParams)” is not a Promise itself but a function that 
+    returns a Promise.
+
+    + At least one .catch() at the end of your Promise chain to handle errors that 
+    occur. If you do not have a .catch(), any errors will silently pass and fade away
+    and you will have no idea why your Promise does not behave as expected.
+
+    + As callback, the code inside .then() is executed when “someAsyncOperation” 
+    request is finished. This means you cannot access any variables passed to or 
+    declared in the Promise chain outside the Promise
+
+--------------------------------------------------------------------------------------
+    Creating Promises
+--------------------------------------------------------------------------------------
+- Callbacks are not interchangeable with Promises so that callback-based APIs cannot 
+be used as Promises. The main difference with callback-based APIs is it does not return 
+a value, it just executes the callback with the result. A Promise-based API, on the 
+other hand, immediately returns a Promise that wraps the asynchronous operation, and 
+then the caller uses the returned Promise object and calls .then() and .catch() on it 
+to declare what will happen when the operations has finished.

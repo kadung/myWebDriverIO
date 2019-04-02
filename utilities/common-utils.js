@@ -5,7 +5,7 @@ module.exports = {
 
   /***************************************************************************************/
   /*
-   * method isEquals ( x, y )
+   * method isEquals ( x, y ) 
    * Deep compare of two objects
    * @param {*} x
    * @param {*} y

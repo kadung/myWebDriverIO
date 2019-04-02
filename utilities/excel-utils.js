@@ -5,7 +5,7 @@ var xls_json  = require(	'../node_modules/node-excel-to-json');
 module.exports = {
     /***************************************************************************************/
     /*
-    * method excel_getTableRow(fileName, sheetName, columnName, where, callback)
+    * method excel_getTableRow(fileName, sheetName, columnName, where, callback) 
     * @param {fileName} - relative or absolute path of Excel file
     * @param {sheetName} - sheet anme of the Excel file from which data needs to be picked
     * @param {columnName} - name of the column in excel sheet

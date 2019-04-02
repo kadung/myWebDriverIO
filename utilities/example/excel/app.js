@@ -3,8 +3,8 @@ var excel = require('../../excel-utils');
 
 
 excel.getTableRow(__dirname+'/sample.xlsx', 'info', 'emp_id', '101', function(results){
-  console.log(results);
-  console.log(results.emp_id);
+  // console.log(results);
+  // console.log(results.emp_id);
 });
 
 excel.getTableRows(__dirname+'/sample.xlsx', 'address', function(results){
@@ -13,6 +13,7 @@ excel.getTableRows(__dirname+'/sample.xlsx', 'address', function(results){
 });
 
 excel.getAllSheetData(__dirname+'/sample.xlsx', function(results){
-  //console.log(results);
+  console.log(results);
+  console.log(results.info[0].emp_id);
   //then do what ever validation you to do withe results
 });

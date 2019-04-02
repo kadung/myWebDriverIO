@@ -32,7 +32,7 @@ class HomePage {
 
     // Assertion
     checkLoginSuccess(){
-        return isElementExisted(this.verifyLoginText, 5000);
+        return isElementExisted(this.verifyLoginText, 4000);
     }
 }
 

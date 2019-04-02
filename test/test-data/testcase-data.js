@@ -11,5 +11,4 @@ export default {
         Strengths: 'accepts others ideas',
         Importance: 'Must have'
     }
-
 }

@@ -2,8 +2,8 @@
 /*               ENVIRONMENT TEST DATA               */
 /*****************************************************/
 let devEnv = {
-	email: 'devuser01@yopmail.com', 
-	password: 'devuser01@yopmail.com'
+	email: 'devuser02@yopmail.com', 
+	password: 'devuser02@yopmail.com'
 };
 
 let qaEnv = {

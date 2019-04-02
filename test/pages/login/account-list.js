@@ -2,7 +2,7 @@ class AccountList {
     // Elements
     get loginButtons()          { return $$('//span[text()="Login"]'); }
 
-    // Action
+    // Actions
 }
 
 export default new AccountList()

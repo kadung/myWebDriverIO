@@ -4,22 +4,29 @@
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 
-// Connection URL
+// Connection params
 const url = 'mongodb://localhost:27017';
-
-// Database Name
 const dbName = 'mydb';
 
-// Create a new MongoClient
-const client = new MongoClient(url);
+// MongoDB class
+class mongoUtils {
+  
+}
 
 // Use connect method to connect to the Server
-client.connect(function(err) {
-  assert.equal(null, err);
-  console.log("Connected successfully to server");
+module.exports =  {
 
-  const db = client.db(dbName);
+  insertDocument: function(){
 
-  client.close();
-});
+  }
+
+    client.connect(function(err) {
+    assert.equal(null, err);
+    console.log("Connected successfully to server");
+
+    const db = client.db(dbName);
+
+    client.close();
+  }); 
+}
 
