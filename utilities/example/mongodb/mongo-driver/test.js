@@ -39,9 +39,6 @@ client.connect(function(err) {
   userCollections.deleteOne(queryParams, (err, result) => {
     console.log("Delete result" + result);
   })
-  
-  // Query a document
-  let resultuserCollections.findOne(queryParams)
 
   client.close();
 });
