@@ -1,5 +1,24 @@
-.idea
+# OSX
+#
 .DS_Store
+
+# IntelliJ
+#
+.idea
+
+# node.js
+#
 node_modules/
 npm-debug.log
-reports
+
+# custom
+apps/
+example-code/
+performance-results/
+reports/
+*.log
+chromeDriver
+.tmp
+.env
+performance-data.csv
+performance-data.json

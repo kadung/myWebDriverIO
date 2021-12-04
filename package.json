@@ -1,65 +1,30 @@
 {
-  "name": "webdriveriov5",
-  "version": "1.0.1",
-  "description": "WebdriverIO Implementation",
+  "name": "test-auto",
+  "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "allure-report": "node_modules/.bin/allure generate ./reports/allure-results && allure report",
-    "junit-report": "node_modules/.bin/junit-viewer --results=./reports/junit-results --save=junit-results.html && open junit-results.html",
-    "test:dev": "node_modules/.bin/wdio ./config/local.dev.conf.js",
-    "test:qa": "node_modules/.bin/wdio ./config/local.qa.conf.js"
+    "browser.desktop": "wdio ./wdio/desktop/browser.conf.js",
+    "browser.mobile": "wdio ./wdio/mobile/browser.conf.js",
+    "native": "wdio ./wdio/mobile/native.conf.js",
+    "bs.app": "wdio ./wdio/browserstack/app.conf.js",
+    "bs.web": "wdio ./wdio/browserstack/web.conf.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kadung/webdriverIOv5.git"
-  },
-  "keywords": [
-    "test"
-  ],
-  "author": "kadung",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/kadung/webdriverIOv5/issues"
-  },
-  "homepage": "https://github.com/kadung/webdriverIOv5#readme",
+  "author": "dukie",
+  "license": "ISC",
   "dependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.2.2",
-    "@babel/preset-env": "^7.2.3",
-    "@babel/register": "^7.0.0",
-    "@wdio/allure-reporter": "^5.3.4",
-    "@wdio/browserstack-service": "^5.3.4",
-    "@wdio/dot-reporter": "^5.2.3",
-    "@wdio/jasmine-framework": "^5.3.2",
-    "@wdio/junit-reporter": "^5.3.1",
-    "@wdio/sauce-service": "^5.3.2",
-    "@wdio/selenium-standalone-service": "^5.2.2",
-    "@wdio/spec-reporter": "^5.2.3",
-    "@wdio/sync": "^5.3.2",
-    "assert": "^1.4.1",
-    "junit-viewer": "^4.11.1",
-    "lodash": "^4.17.4",
-    "mongodb": "^3.1.13",
-    "mongoose": "^5.4.17",
-    "node-excel-to-json": "0.0.3",
-    "underscore": "^1.8.3",
-    "webdriverio": "^5.5.0"
-  },
-  "devDependencies": {
-    "@wdio/cli": "^5.3.5",
-    "@wdio/local-runner": "^5.3.5",
-    "selenium-standalone": "^6.15.4"
-  },
-  "babel": {
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "targets": {
-            "node": "current"
-          }
-        }
-      ]
-    ]
+    "@wdio/appium-service": "^7.10.1",
+    "@wdio/browserstack-service": "^7.11.1",
+    "@wdio/cli": "^7.11.1",
+    "@wdio/jasmine-framework": "^7.11.1",
+    "@wdio/local-runner": "^7.11.1",
+    "@wdio/selenium-standalone-service": "^7.10.1",
+    "@wdio/spec-reporter": "^7.10.1",
+    "appium": "^1.21.0",
+    "axios": "^0.21.4",
+    "dotenv": "^10.0.0",
+    "wdio-image-comparison-service": "^3.0.0",
+    "wdio-json-reporter": "^3.0.0",
+    "wdio-performancetotal-service": "^1.2.0"
   }
 }
